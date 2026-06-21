@@ -1,0 +1,35 @@
+{
+  "name": "p0",
+  "version": "0.1.0",
+  "description": "A Codex plan gate that reviews implementation plans for P0 blockers before code changes.",
+  "author": {
+    "name": "poweroftrue",
+    "url": "https://github.com/poweroftrue"
+  },
+  "homepage": "https://github.com/poweroftrue/p0",
+  "repository": "https://github.com/poweroftrue/p0",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skill",
+    "planning",
+    "review"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "P0",
+    "shortDescription": "Plan gate for P0 blockers",
+    "longDescription": "P0 makes Codex stop before implementation, inspect the real code paths behind a proposed plan, revise around any P0 blockers, and continue the review loop until the plan is clear or blocked.",
+    "developerName": "poweroftrue",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ],
+    "websiteURL": "https://github.com/poweroftrue/p0",
+    "defaultPrompt": [
+      "Use $p0 to gate this plan before implementation.",
+      "Use $p0 to review this change for P0 blockers."
+    ],
+    "brandColor": "#DC2626"
+  }
+}
