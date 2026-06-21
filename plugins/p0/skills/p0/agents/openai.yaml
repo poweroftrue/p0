@@ -2,6 +2,6 @@ interface:
   display_name: "P0"
   short_description: "Plan gate for P0 blockers"
   brand_color: "#DC2626"
-  default_prompt: "Use $p0 to draft and review a plan until no P0 blockers remain."
+  default_prompt: "Use $p0 or /plan p0 to review a plan until no P0 blockers remain."
 policy:
   allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 {
   "name": "p0",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Codex plan gate that reviews implementation plans for P0 blockers before code changes.",
   "author": {
     "name": "poweroftrue",
@@ -27,7 +27,7 @@
     ],
     "websiteURL": "https://github.com/poweroftrue/p0",
     "defaultPrompt": [
-      "Use $p0 to gate this plan before implementation.",
+      "Use /plan p0 to gate this plan before implementation.",
       "Use $p0 to review this change for P0 blockers."
     ],
     "brandColor": "#DC2626"

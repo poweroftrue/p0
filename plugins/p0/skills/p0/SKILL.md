@@ -1,6 +1,6 @@
 ---
 name: p0
-description: Use when the user invokes $p0, starts a plan request with p0, says P0 gate, or asks Codex to plan, review for missed P0 blockers, revise the plan, and repeat until no P0 blockers remain before implementation.
+description: Use when the user invokes $p0, starts /plan p0, starts a plan request with p0, says P0 gate, or asks Codex to plan, review for missed P0 blockers, revise the plan, and repeat until no P0 blockers remain before implementation.
 ---
 
 # P0 Plan Gate
@@ -14,6 +14,19 @@ Use this skill for plan-only work. Do not implement code while the P0 gate is ac
 3. Do not use a fixed checklist. Let each round decide what to inspect next from the plan, the code just read, suspicious boundaries, missing invariants, and unresolved assumptions.
 4. If a P0 blocker is found, revise the plan to remove it, explain the blocker and the adjustment, then run another review pass over the revised plan.
 5. If no P0 blockers remain, stop. The user will decide whether to implement.
+
+## Goal Handoff
+
+Use `/goal` only as a handoff after the P0 gate is clear, or when the user explicitly asks to turn the cleared plan into a goal. Do not start implementation while the P0 gate is active.
+
+When the plan is clear and the work is broad enough to benefit from Goal mode, include a concise `/goal` candidate that preserves:
+
+- the durable objective
+- the constraints and non-goals from the P0 review
+- the verification commands or artifacts that prove completion
+- the stopping condition for success or blocked status
+
+If the requested work is not long-running, skip the goal handoff and leave the user with the cleared plan.
 
 ## P0 Definition
 

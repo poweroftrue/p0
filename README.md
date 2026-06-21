@@ -13,6 +13,12 @@ codex plugin marketplace add poweroftrue/p0 --ref main && codex plugin add p0@p0
 This adds the repository marketplace, installs the P0 plugin, and enables the bundled skill. Start a new Codex thread and invoke:
 
 ```text
+/plan p0
+```
+
+You can also invoke the skill directly:
+
+```text
 $p0
 ```
 
@@ -30,6 +36,7 @@ The skill tells Codex to:
 2. Review that plan for P0 blockers across relevant code paths, contracts, data flows, tests, and external interactions.
 3. Revise the plan whenever a P0 blocker is found.
 4. Stop before implementation once no P0 blockers remain.
+5. Draft a `/goal` candidate when a clear plan is broad enough for long-running execution.
 
 Every P0 gate response ends with a machine-readable `P0_GATE` footer so local hooks can detect whether the gate is clear, revised, or blocked.
 
