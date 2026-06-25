@@ -40,13 +40,28 @@ The skill tells Codex to:
 
 Every P0 gate response ends with a machine-readable `P0_GATE` footer so local hooks can detect whether the gate is clear, revised, or blocked.
 
+## Hook Behavior
+
+The optional local hook is included at `plugins/p0/hooks/p0_gate.py`. It activates on `p0` or `$p0`, blocks every non-clear/non-blocked P0 footer, and derives the next review round from the assistant's `rounds_completed` value.
+
+This matters for long gates: a `status: revised` footer with `rounds_completed: 6` asks the next continuation to complete round 7. A `status: clear` footer is accepted only when `p0_count` is 0 and `rounds_completed` advances beyond the prior revised round.
+
+Run the hook regression suite with:
+
+```bash
+python3 -m unittest discover -s tests
+```
+
 ## Package Layout
 
 ```text
 .agents/plugins/marketplace.json
 plugins/p0/.codex-plugin/plugin.json
+plugins/p0/hooks/p0_gate.py
 plugins/p0/skills/p0/SKILL.md
 plugins/p0/skills/p0/agents/openai.yaml
+tests/fixtures/bousla_google_search_7_rounds.md
+tests/test_p0_gate.py
 ```
 
 This follows the Codex plugin distribution model while keeping the underlying skill installable directly.

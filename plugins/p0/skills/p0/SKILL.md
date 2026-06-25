@@ -15,6 +15,16 @@ Use this skill for plan-only work. Do not implement code while the P0 gate is ac
 4. If a P0 blocker is found, revise the plan to remove it, explain the blocker and the adjustment, then run another review pass over the revised plan.
 5. If no P0 blockers remain, stop. The user will decide whether to implement.
 
+## Round Discipline
+
+Treat one round as: inspect evidence, review the current plan against that evidence, and either revise the plan or prove that no P0 remains.
+
+- The first P0 response completes round 1. When a hook continuation asks for round N, complete that round and set `rounds_completed: N`.
+- If a P0 is found and the plan changes, end that response with `status: revised`. Do not mark the same response clear just because the plan was revised; the revised plan needs another evidence-seeking pass.
+- Use `status: clear` only after the current round finds zero P0 blockers, `p0_count` is 0, every previously reported P0 is addressed, and there are no uninspected plan-relevant code paths, contracts, data flows, tests, or external interactions left at P0 severity.
+- If the response text says or implies that a P0 remains, the footer must not say `status: clear`.
+- There is no target round count and no maximum. Seven or more rounds is correct when each revised round exposes another P0-level problem.
+
 ## Goal Handoff
 
 Use `/goal` only as a handoff after the P0 gate is clear, or when the user explicitly asks to turn the cleared plan into a goal. Do not start implementation while the P0 gate is active.
@@ -49,3 +59,5 @@ code_paths_read: <short comma-separated list>
 Use `status: clear` only when `p0_count: 0` and the plan is ready for the user to approve for implementation.
 Use `status: revised` when any P0 was found and the plan was changed; another review pass is required. Continue until the gate is clear or blocked; there is no fixed round cap.
 Use `status: blocked` only when you cannot make meaningful progress without user input.
+
+The `rounds_completed` value must be the round just completed, not the next round to perform. Increase it by one on each hook continuation.

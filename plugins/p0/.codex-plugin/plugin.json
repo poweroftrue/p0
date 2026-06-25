@@ -1,6 +1,6 @@
 {
   "name": "p0",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Codex plan gate that reviews implementation plans for P0 blockers before code changes.",
   "author": {
     "name": "poweroftrue",
